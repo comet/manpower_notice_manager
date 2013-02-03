@@ -1,0 +1,44 @@
+<%= form_for(@notice) do |f| %>
+  <% if @notice.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@notice.errors.count, "error") %> prohibited this notice from being saved:</h2>
+
+      <ul>
+        <% @notice.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <%= f.label :edition %><br />
+    <%= f.select(:edition, Paper.all.collect {|e| [ e.name, e.id ] })%>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :id_number %><br />
+    <%= f.text_field :id_number %>
+  </div>
+  <div class="field">
+    <%= f.label :edition_date %><br />
+    <%= f.date_select :edition_date %>
+  </div>
+  <div class="field">
+    <%= f.label :page_no %><br />
+    <%= f.number_field :page_no %>
+  </div>
+  <div class="field">
+    <%= f.label :company %><br />
+    <%= f.text_field :company %>
+  </div>
+  <div class="field">
+    <%= f.label :no_of_appearance %><br />
+    <%= f.number_field :no_of_appearance %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

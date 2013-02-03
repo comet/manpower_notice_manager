@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> Notices Manager</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+  <!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body>
+  <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="navbar-inner">
+        <div class="container">
+          <%= link_to "Man power services", 'http://www.manpowerservicesgroup.com', id: "logo" %>
+          <nav>
+            <ul class="nav pull-right">
+              <li><%= link_to "Home", root_path %></li>
+              <li><%= link_to "Search", :controller=>"search",:action=>"index" %></li>
+              <li><%= link_to "Settings",    :controller=>"settings",:action=>"index"  %></li>
+              <li><%= link_to "Help", '#' %></li>
+            </ul>
+          </nav>
+</div>
+      </div>
+    </header>
+  <div class="container">
+    <%= render :partial=>'layouts/notifications' %>
+      <%= yield %>
+    </div>   
+</body>
+</html>

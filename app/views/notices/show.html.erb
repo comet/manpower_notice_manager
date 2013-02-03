@@ -1,0 +1,40 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @notice.name %>
+</p>
+
+<p>
+  <b>Edition:</b>
+  <%= Paper.find(@notice.edition).name %>
+</p>
+
+<p>
+  <b>Edition date:</b>
+  <%= @notice.edition_date.to_date %>
+</p>
+
+<p>
+  <b>Page no:</b>
+  <%= @notice.page_no %>
+</p>
+
+<p>
+  <b>Company:</b>
+  <%= @notice.company %>
+</p>
+
+<p>
+  <b>Id number:</b>
+  <%= @notice.id_number %>
+</p>
+
+<p>
+  <b>No of appearance:</b>
+  <%= @notice.no_of_appearance %>
+</p>
+
+
+<%= link_to 'Edit', edit_notice_path(@notice) %> |
+<%= link_to 'Back', notices_path %>

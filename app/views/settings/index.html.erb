@@ -1,0 +1,14 @@
+<div>
+
+  <fieldset>
+    <legend>File to import</legend>
+    <table>
+      <tr>
+        <%= form_tag({:action => :index}, :multipart => true) do %>
+          <%= file_field_tag 'upload' %>
+        <td><input type="submit" name="submit_import" value="import" id="search_type"/></td>
+        <% end %>
+      </tr>
+    </table>
+  </fieldset>
+</div>

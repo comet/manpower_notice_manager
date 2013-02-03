@@ -1,0 +1,36 @@
+<h1>Listing all notices</h1>
+
+<table>
+  <table class="table table-striped">  
+        <thead>  
+          <tr>  
+    <th>Name</th>
+    <th>Edition</th>
+    <th>Edition date</th>
+    <th>Page no</th>
+    <th>Company</th>
+    <th>Id number</th>
+    <th>No of appearances</th>
+    <th></th>
+  </tr>
+        </thead>
+        <tbody>
+
+<% @notices.each do |notice| %>
+  <tr>
+    <td><%= link_to notice.name,notice %></td>
+    <td><%= Paper.find(notice.edition).name %></td>
+    <td><%= notice.edition_date.nil?? "UNDEFINED" : notice.edition_date.to_date %></td>
+    <td><%= notice.page_no %></td>
+    <td><%= notice.company %></td>
+    <td><%= notice.id_number %></td>
+    <td><%= notice.no_of_appearance %></td>
+    <td><%= link_to 'Delete', notice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+        </tbody>
+</table>
+
+<br />
+
+<%= link_to 'New Notice', new_notice_path %>

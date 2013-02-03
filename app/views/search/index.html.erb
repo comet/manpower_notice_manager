@@ -1,0 +1,55 @@
+<% if @show %>
+<%if @notices.size <1 %>
+<h3> No notices could be found with the search parameters</h3>
+<%else%>
+<h1>Listing all notices</h1>
+
+<table>
+  <table class="table table-striped">  
+        <thead>  
+          <tr>  
+    <th>Name</th>
+    <th>Edition</th>
+    <th>Edition date</th>
+    <th>Page no</th>
+    <th>Company</th>
+    <th>Id number</th>
+    <th>No of appearances</th>
+    <th></th>
+  </tr>
+        </thead>
+        <tbody>
+
+<% @notices.each do |notice| %>
+  <tr>
+    <td><%= link_to notice.name,notice %></td>
+    <td><%= Paper.find(notice.edition).name %></td>
+    <td><%= notice.edition_date.to_date %></td>
+    <td><%= notice.page_no %></td>
+    <td><%= notice.company %></td>
+    <td><%= notice.id_number %></td>
+    <td><%= notice.no_of_appearance %></td>
+    <td><%= link_to 'Delete', notice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+  <%end%>
+<% end %>
+        </tbody>
+</table>
+
+<%else%>
+<div>
+<form method="get"action="/search/index/">
+    <fieldset>
+      <legend>Find Notice(s)</legend>
+      <table>
+        <tr>
+          <td><label for="name">Enter Keyword:</label></td>
+          <td><input type="text" name="name" id="name" size="50" maxlength="128" /></td>
+          <td><input type="submit" name="search" value="search" id="search_type"/></td>
+        </tr>
+      </table>
+    </fieldset>
+
+  </form>
+</div>
+<%end%>

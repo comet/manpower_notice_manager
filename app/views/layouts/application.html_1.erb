@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Notices Manager</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div id="header" class="widget">
+      <%= image_tag "icon.png" %> <h3>MANPOWER SERVICES NOTICES MANAGEMENT SYSTEM</h3>
+    </div>
+  <%= render :partial=> 'layouts/actiontabs' %>
+  <%= render :partial=> 'layouts/notifications' %>
+  <div id="pageBody">
+<%= yield %>
+    </div>
+<div id="footer">
+    <div class="footer">&copy;<%=DateTime.now.year.to_s%> Manpower services limited<div>Powered by e-consult-systems</div></div>
+  </div>
+</body>
+</html>

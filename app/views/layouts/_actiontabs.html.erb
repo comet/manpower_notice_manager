@@ -1,0 +1,13 @@
+<div id="nav" class="widget">
+        <ul class="tabnav">
+          <li><%= link_to "Home",:controller=>'dashboard' %></li>
+          <li><%= link_to "Find/Create Patient",new_patient_path %></li>
+          <li><%= link_to "Reporting",:controller=>'reports' %></li>
+          <li><%= link_to "Payments",:controller=>'payments' %></li>
+          <li><%= link_to "Pharmacy",:controller=>'pharmacy' %></li>
+          <li><%= link_to "Administration",:controller=>'admin' %></li>
+          <%if @current_user%>
+          <li><%= link_to "Sign out "+@current_user.username,:controller=>"sessions",:action=>"logout"%></li>
+          <%end%>
+        </ul>
+      </div>
