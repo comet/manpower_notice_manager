@@ -1,5 +1,11 @@
+<ul class="nav nav-tabs">
+  <li >
+    <%=link_to 'Notices',new_notice_path%>
+  </li>
+  <li class="active"><a href="#">Notices</a></li>
+</ul>
 <h2>Listing all notices</h2>
-<%= link_to 'New Notice', new_notice_path %>
+<%= link_to 'New Notice', new_notice_path,:class=>"button" %>
 <table>
   <table class="table table-striped">  
         <thead>  
