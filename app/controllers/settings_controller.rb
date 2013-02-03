@@ -17,16 +17,21 @@ class SettingsController < ApplicationController
         CSV.foreach(file) do |row|
           # use row here...
           count = count + 1
-          name = row[2].to_s
+          name = row[3].to_s
           id =row[3].to_i
-          edition = 1
-          edition_date = row[0]
-          page_no = row [1].to_i
+          ed = row[0]
+          edition = ed.include?('Nation')? 1 : 2
+          edition_date = row[1]
+          page_no = row [2].to_i
           co = row [4].to_s
           no_of_app = 1
           notice = {:name=>name,:edition=>edition,:edition_date=>edition_date,:page_no=>page_no,:company=>co,:no_of_appearance=>no_of_app}
           @notice = Notice.new(notice)
-          @notice.save
+          if !@notice.save
+            Rails.logger.error{"Failed Creating the notice"}
+            Rails.logger.error{@notice}
+          end
+          
         end
         #@parsed_file = FasterCSV.read(file)
         #@parsed_file.each do |row| 

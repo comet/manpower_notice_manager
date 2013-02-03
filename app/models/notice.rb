@@ -4,16 +4,22 @@ class Notice < ActiveRecord::Base
  # validates :id_number,:page_no,:no_of_appearance, :numericality => true
   def self.general_search(value)
     conditions = []
+    value = value<<"%"
+    prep = "%"
+    value = prep << value
     if value.length > 0
-      conditions[0] ="name LIKE '%' ? '%'"
+      conditions[0] =" name LIKE ?"
       conditions<< value
-      conditions[0]+="OR company LIKE'%' ?'%'"
+      conditions[0]+=" OR company LIKE ?"
       conditions<< value
 
       where(conditions)
     else
       Notice.all
     end
+    
+  end
+  def self.advanced_search(value)
     
   end
 end
