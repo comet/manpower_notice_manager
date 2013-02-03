@@ -18,11 +18,11 @@
 
 <% @notices.each do |notice| %>
   <tr>
-    <td><%= link_to notice.name,notice %></td>
-    <td><%= Paper.find(notice.edition).name %></td>
+    <td><%= link_to notice.name.upcase,notice %></td>
+    <td><%= Paper.find(notice.edition).name.upcase %></td>
     <td><%= notice.edition_date.nil?? "UNDEFINED" : notice.edition_date.to_date %></td>
     <td><%= notice.page_no %></td>
-    <td><%= notice.company %></td>
+    <td><%= notice.company.upcase %></td>
     <td><%= notice.id_number %></td>
     <td><%= notice.no_of_appearance %></td>
     <td><%= link_to 'Delete', notice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -30,5 +30,5 @@
 <% end %>
         </tbody>
 </table>
-
 <br />
+<%=  will_paginate(@notices)%>

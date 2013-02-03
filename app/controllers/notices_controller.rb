@@ -2,7 +2,7 @@ class NoticesController < ApplicationController
   # GET /notices
   # GET /notices.json
   def index
-    @notices = Notice.all #.paginate(:page => params[:page], :per_page => 15)
+    @notices = Notice.paginate(:page => params[:page], :per_page => 15)
 
     respond_to do |format|
       format.html # index.html.erb
